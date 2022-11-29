@@ -1,0 +1,53 @@
+{% extends 'client/base_client.html' %}
+
+{% block title %}<title>ABS - Registro Cliente</title>{% endblock title %}
+
+{% block jumbotron %}
+<table class="table table-borderless">
+    <thead class="border-botton font-weight-bold">
+        <tr>
+            <td>Nome</td>
+            <td>Empresa</td>
+            <td>Telefone</td>
+            <td>Endereço</td>
+            <td>Zona</td>
+            <td>CEP</td>
+            <td>
+                <a href="{% url 'client_insert' %}" class="btn btn-outline-success">
+                    <i class="fas fa-plus"></i> Add
+                </a>
+        
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for client in clients %}
+        <tr>
+            <td>{{ client.name }}</td>
+            <td>{{ client.company_name }}</td>
+            <td>{{ client.phone_number }}</td>
+            <td>{{ client.address }}</td>
+            <td>{{ client.zone }}</td>
+            <td>{{ client.zip_code }}</td>
+
+            <td>
+                <a href="{% url 'client_edit' client.id %}" class="btn text-secondary px-0">
+                    <i class="far fa-edit fa-lg"></i>
+                </a>
+
+                <form action="{% url 'client_delete' client.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn">
+                        <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                    </button>
+                </form>
+                
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+
+</table>
+
+{% endblock jumbotron %}
