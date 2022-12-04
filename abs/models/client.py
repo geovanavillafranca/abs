@@ -12,4 +12,4 @@ class Client(models.Model):
     last_update = models.DateTimeField(auto_now=True)
 
 
-
+        

@@ -1,0 +1,46 @@
+{% extends 'client/base_client.html' %}
+
+{% block title %}<title>ABS - Registro Cliente</title>{% endblock title %}
+
+{% block jumbotron %}
+<table class="table table-borderless">
+    <thead class="border-botton font-weight-bold">
+        <tr>
+            <td>Produto</td>
+            <td>Preço</td>
+            <td>Ultima Atualizacao</td>
+            <td>
+                <a href="{% url 'client_insert' %}" class="btn btn-outline-success">
+                    <i class="fas fa-plus"></i> Add
+                </a>
+        
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.last_update }}</td>
+            <td>
+                <a href="{% url 'product_edit' product.id %}" class="btn text-secondary px-0">
+                    <i class="far fa-edit fa-lg"></i>
+                </a>
+
+                <form action="{% url 'product_delete' product.id %}" method="post" class="d-inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn">
+                        <i class="far fa-trash-alt fa-lg text-danger float-right"></i>
+                    </button>
+                </form>
+                
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+
+
+</table>
+
+{% endblock jumbotron %}

@@ -1,0 +1,36 @@
+{% extends 'product/base_product.html' %}
+{% load crispy_forms_tags %}
+
+
+{% block jumbotron %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                {{ form.name | as_crispy_field }}
+            </div>
+            <div class="col-md-6">
+                {{ form.price | as_crispy_field }}
+            </div>
+            
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <a href="{% url 'product_list' %}" class="btn btn-info btn block btn-lg">
+                    <i class="fas fa-stream"></i> Voltar para lista
+                </a>
+            </div>
+
+            <div class="col-md-8">
+                <button class="submit btn btn-success btn-block btn-lg">
+                    <i class="fa-solid fa-database"></i> Salvar
+                </button>
+            </div>
+            
+        </div>
+    </form>
+
+{% endblock jumbotron %}
+
+
