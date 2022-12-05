@@ -6,3 +6,5 @@ class Product(models.Model):
     price = models.DecimalField(default=0.00, decimal_places=2, max_digits=20)
     last_update = models.DateTimeField(auto_now=True)
 
+    def __str__(self):
+        return self.name

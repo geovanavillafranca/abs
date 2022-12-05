@@ -1,0 +1,28 @@
+{% load calculate_order %}
+
+<table>
+    <tr>
+        <td>Produto</td>
+        <td>Qty</td>
+        <td>Preco</td>
+        <td>Total</td>
+
+
+    </tr>
+    {% for p in order_items %}
+    <tr>
+        <td>{{ p.product.name }}</td>
+        <td>{{ p.qty }}</td>
+        <td>{{ p.product.price }}</td>
+        <td>{{ p|product_price_total }}</td>
+    {%endfor%}
+
+    </tr>
+    <br>
+    <h4>Total</h4>
+    <hr>
+
+    {{ order_items|order_price_total }}
+    
+
+</table>

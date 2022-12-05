@@ -1,6 +1,6 @@
-{% extends 'client/base_client.html' %}
+{% extends 'product/base_product.html' %}
 
-{% block title %}<title>ABS - Registro Cliente</title>{% endblock title %}
+{% block title %}<title>ABS - Registro Produtos</title>{% endblock title %}
 
 {% block jumbotron %}
 <table class="table table-borderless">
@@ -10,7 +10,7 @@
             <td>Preço</td>
             <td>Ultima Atualizacao</td>
             <td>
-                <a href="{% url 'client_insert' %}" class="btn btn-outline-success">
+                <a href="{% url 'product_insert' %}" class="btn btn-outline-success">
                     <i class="fas fa-plus"></i> Add
                 </a>
         

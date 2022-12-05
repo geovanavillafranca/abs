@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import ClientForm, ProductForm
-from .models import Client, Product
+from .models import Client, Product, OrderItem
 # Create your views here.
 
 def client_list(request):
@@ -61,6 +61,13 @@ def product_form(request, id=0):
             form.save()
             return redirect('/product/list')
 
+def product_delete(request, id):
+    product = Product.objects.get(pk=id)
+    product.delete()
+    return redirect('/product/list')
 
-def product_delete(request):
-    pass
+
+def product_qty(request):
+    order_items = OrderItem.objects.all()
+    context = {'order_items': order_items}
+    return render(request, 'order/order_form.html', context)
